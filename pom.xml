@@ -4,11 +4,11 @@
 
   <groupId>com.metapuppy</groupId>
   <artifactId>cedict-reader</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.2</version>
   <packaging>jar</packaging>
 
-  <name>cedict-reader</name>
-  <url>http://metapuppy.com/cedict-reader</url>
+  <name>CE-Dict Reader</name>
+  <url>https://github.com/reaperkrew/cedict-reader</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
