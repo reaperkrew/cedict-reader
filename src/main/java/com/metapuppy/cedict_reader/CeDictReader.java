@@ -26,7 +26,7 @@ import com.metapuppy.cedict_reader.DictionaryEntry;
 
 
 /**
- * 
+ * <code>CeDictReader</code> - A library that parses the CE Chinese-English Dictionary.
  * @author gmccarthy
  *
  */
@@ -49,7 +49,7 @@ public class CeDictReader {
 			logger.fatal("Dictionary not found in {}. You should make sure this application has "
 					+ "sufficient privileges to access the folder. You can call downloadDictionary(Path) "
 					+ "for the application to download it automatically.", pathToDict.toString());
-			System.exit(0);			
+			return;			
 		}
 		this.loadDictionary();
 	}
@@ -98,16 +98,16 @@ public class CeDictReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal("Caught an IOException while parsing the dictionary: " + e.getMessage());
-			System.exit(0);
+			return;
+			
 		} catch(Exception e){
 			e.printStackTrace();
 			logger.fatal("Caught an unknown error while parsing the dictionary: " + e.getMessage());
-			System.exit(0);
+			return;
 		}
 		
 		sw.stop();
 		logger.info("Finished loading dictionary. Time: {}ms. Entries: {}", sw.getTime(), entries.size());
-
 	}
 	
 
@@ -174,7 +174,7 @@ public class CeDictReader {
 		} catch (IOException e) {
 			logger.fatal(e.getMessage());
 			e.printStackTrace();
-			System.exit(0);
+			return;
 		}
 		
 		// verify file exists
@@ -185,7 +185,7 @@ public class CeDictReader {
 
 		}catch(InvalidPathException e){
 			logger.fatal(e.getMessage());
-			System.exit(0);
+			return;
 		}
 
 		logger.info("Deleting .zip file...");
