@@ -86,12 +86,13 @@ public class CeDictReader {
 		try(Stream<String> stream = Files.lines(dict).filter(s->s.startsWith("#") == false))
 		{
 		for (String s : (Iterable<String>) () -> stream.iterator()) {
-	        DictionaryEntry entry = new DictionaryEntry();
-	        entry.traditional = s.split(" ")[0];
-	        entry.simplified = s.split(" ")[1];
-	        entry.pinyin = StringUtils.substringBetween(s, "[", "]");
-	        entry.definitions = Arrays.copyOfRange(s.split("/"), 1, s.split("/").length);
-	        this.entries.add(entry);
+	        
+			String traditional = s.split(" ")[0];
+	        String simplified = s.split(" ")[1];
+	        String pinyin = StringUtils.substringBetween(s, "[", "]");
+	        String[] definitions = Arrays.copyOfRange(s.split("/"), 1, s.split("/").length);
+	        DictionaryEntry entry = new DictionaryEntry(traditional, simplified, pinyin, definitions);
+	        this.entries.add(entry);	        
 	    }
 
 		} catch (IOException e) {
